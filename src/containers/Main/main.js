@@ -1,7 +1,7 @@
 import React from 'react';
 import connectProps from './props';
 import { Container, Box } from '@material-ui/core';
-import { PlayerCards, Timer, TimerButton } from '/components';
+import { PlayerCards, Timer, TimerButton } from 'components';
 
 const Main = ({
   remainingTime,

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { STARTING_TIME, SPEED, PLAYERS } from '/config';
+import { STARTING_TIME, SPEED, PLAYERS } from 'config';
 
 const initialState = {
   paused: true,

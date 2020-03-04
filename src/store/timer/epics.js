@@ -1,8 +1,8 @@
 import { interval, empty } from 'rxjs';
 import { mapTo, scan, switchMap, takeWhile, mergeMapTo } from 'rxjs/operators';
 import { combineEpics, ofType } from 'redux-observable';
-import { SPEED } from '/config';
-import { subtractTime, addPlaytime, toggleTimer } from '/store/timer';
+import { SPEED } from 'config';
+import { subtractTime, addPlaytime, toggleTimer } from 'store/timer';
 
 const timerEpic = (action$, state$) => {
   const interval$ = interval(SPEED).pipe(mapTo(SPEED));

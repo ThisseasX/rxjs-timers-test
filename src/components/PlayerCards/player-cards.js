@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { Box, Typography, Paper, Grid } from '@material-ui/core';
-import { formatTime } from '/utils';
+import { formatTime } from 'utils';
 
 const PlayerCard = ({ stat, activePlayer, changePlayer }) => {
   const handleClick = useCallback(() => {
