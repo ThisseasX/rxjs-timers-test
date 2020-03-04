@@ -1,32 +1,22 @@
-import { BehaviorSubject, interval, empty, of, from } from 'rxjs';
-import {
-  mapTo,
-  scan,
-  tap,
-  switchMap,
-  takeWhile,
-  mergeMap,
-  mergeMapTo,
-  map,
-} from 'rxjs/operators';
-import { flow } from 'lodash/fp';
-// import { playerReducer, playerActions, playerInitialState } from './player-reducer';
-import { bindActionCreators } from 'redux';
-import { SPEED, INITIALLY_PAUSED } from '/config';
+import { interval, empty } from 'rxjs';
+import { mapTo, scan, switchMap, takeWhile, mergeMapTo } from 'rxjs/operators';
 import { combineEpics, ofType } from 'redux-observable';
-import { subtractTime, addPlaytime, changePlayer } from '/store/timer';
-import { get } from 'lodash/fp';
-import store from '../../store';
+import { SPEED } from '/config';
+import { subtractTime, addPlaytime, toggleTimer } from '/store/timer';
 
-const interval$ = interval(SPEED).pipe(mapTo(SPEED));
+const timerEpic = (action$, state$) => {
+  const interval$ = interval(SPEED).pipe(mapTo(SPEED));
+  const remainingTime = state$.value.timer.remainingTime;
+  const paused = state$.value.timer.paused;
 
-const awesomeEpic = (action$, state$) => {
-  return state$.pipe(
-    switchMap(({ timer: { paused, remainingTime } }) =>
-      paused ? empty() : interval$.pipe(takeWhile(() => remainingTime > 0)),
-    ),
+  return action$.pipe(
+    ofType(toggleTimer),
+    scan(paused => !paused, paused),
+    switchMap(paused => (paused ? empty() : interval$)),
+    scan((remaining, i) => remaining - i, remainingTime),
+    takeWhile(remaining => remaining >= 0),
     mergeMapTo([subtractTime(), addPlaytime()]),
   );
 };
 
-export default combineEpics(awesomeEpic);
+export default combineEpics(timerEpic);

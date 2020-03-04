@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { STARTING_TIME, SPEED, INITIALLY_PAUSED, PLAYERS } from '/config';
+import { STARTING_TIME, SPEED, PLAYERS } from '/config';
 
 const initialState = {
-  paused: INITIALLY_PAUSED,
+  paused: true,
   remainingTime: STARTING_TIME,
   activePlayer: null,
   playerStats: PLAYERS.map(player => ({
