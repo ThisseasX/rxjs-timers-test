@@ -5,7 +5,7 @@ import { formatTime } from '/utils';
 const PlayerCard = ({ stat, activePlayer, changePlayer }) => {
   const handleClick = useCallback(() => {
     changePlayer(stat.name);
-  }, [stat]);
+  }, [changePlayer, stat]);
 
   return (
     <Grid item>
