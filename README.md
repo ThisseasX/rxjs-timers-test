@@ -2,3 +2,5 @@
 RxJS Timers Test.
 
 Preview at: [https://thisseasx.github.io/rxjs-timers-test/](https://thisseasx.github.io/rxjs-timers-test/).
+
+> Also installable as a PWA.
