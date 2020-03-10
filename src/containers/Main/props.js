@@ -1,23 +1,27 @@
 import { connect } from 'react-redux';
-import { changePlayer, toggleTimer } from 'store/timer';
+import { changePlayer, toggleTimer, resetTimer } from 'store/timer';
 import { composeSelectors } from 'utils';
+
 import {
   remainingTime,
   activePlayer,
   playerStats,
-  buttonText,
+  paused,
+  done,
 } from 'store/timer/selectors';
 
 const mapStateToProps = composeSelectors({
   remainingTime,
   activePlayer,
   playerStats,
-  buttonText,
+  paused,
+  done,
 });
 
 const mapDispatchToProps = {
   changePlayer,
   toggleTimer,
+  resetTimer,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps);

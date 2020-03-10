@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { STARTING_TIME, SPEED, PLAYERS } from 'config';
 
 const initialState = {
+  done: false,
   paused: true,
   remainingTime: STARTING_TIME,
   activePlayer: null,
@@ -31,6 +32,12 @@ const reducers = {
   toggleTimer: state => {
     state.paused = !state.paused;
   },
+  setDone: state => {
+    state.done = true;
+  },
+  resetTimer: () => {
+    return initialState;
+  },
 };
 
 const timerSlice = createSlice({
@@ -46,4 +53,6 @@ export const {
   changePlayer,
   subtractTime,
   toggleTimer,
+  setDone,
+  resetTimer,
 } = timerSlice.actions;

@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { Box, Button } from '@material-ui/core';
 
-const TimerButton = ({ toggleTimer, buttonText }) => {
+const TimerButton = ({ paused, done, toggleTimer, resetTimer }) => {
   const handleClick = useCallback(() => {
-    toggleTimer();
-  }, [toggleTimer]);
+    done ? resetTimer() : toggleTimer();
+  }, [done, toggleTimer, resetTimer]);
 
   return (
     <Box mt={2} display={'flex'} justifyContent={'center'}>
@@ -15,7 +15,7 @@ const TimerButton = ({ toggleTimer, buttonText }) => {
           color={'primary'}
           onClick={handleClick}
         >
-          {buttonText}
+          {done ? 'Reset' : paused ? 'Start' : 'Stop'}
         </Button>
       </Box>
     </Box>

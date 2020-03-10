@@ -7,15 +7,22 @@ const Main = ({
   remainingTime,
   activePlayer,
   playerStats,
-  buttonText,
+  paused,
+  done,
   changePlayer,
   toggleTimer,
+  resetTimer,
 }) => (
   <Box py={4} display={'flex'} alignItems={'center'} flexDirection={'column'} clone>
     <Container maxWidth={'md'}>
       <div>
         <Timer remainingTime={remainingTime} />
-        <TimerButton toggleTimer={toggleTimer} buttonText={buttonText} />
+        <TimerButton
+          toggleTimer={toggleTimer}
+          paused={paused}
+          done={done}
+          resetTimer={resetTimer}
+        />
       </div>
       <PlayerCards
         activePlayer={activePlayer}
