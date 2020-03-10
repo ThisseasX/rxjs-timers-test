@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { Box, Typography, Paper, Grid } from '@material-ui/core';
 import { formatTime } from 'utils';
+import connectProps from './props';
 
 const PlayerCard = ({ stat, activePlayer, changePlayer }) => {
   const handleClick = useCallback(() => {
@@ -44,4 +45,4 @@ const PlayerCards = ({ activePlayer, playerStats, changePlayer }) => (
   </Box>
 );
 
-export default PlayerCards;
+export default connectProps(PlayerCards);

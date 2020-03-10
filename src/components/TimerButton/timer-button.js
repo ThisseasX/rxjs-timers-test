@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { Box, Button } from '@material-ui/core';
+import connectProps from './props';
 
 const TimerButton = ({ paused, done, toggleTimer, resetTimer }) => {
   const handleClick = useCallback(() => {
@@ -22,4 +23,4 @@ const TimerButton = ({ paused, done, toggleTimer, resetTimer }) => {
   );
 };
 
-export default TimerButton;
+export default connectProps(TimerButton);
