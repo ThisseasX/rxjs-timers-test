@@ -1,4 +1,4 @@
-import { flow, map, mapValues } from 'lodash/fp';
+import { flow, map } from 'lodash/fp';
 
 const padZeroes = timeSegment => String(timeSegment).padStart(2, '0');
 const concatTime = ([minutes, seconds, msec]) => `${minutes}:${seconds}.${msec}`;
@@ -13,7 +13,4 @@ const formatTime = ms => {
   return formattedTime([minutes, seconds, msec]);
 };
 
-const composeSelectors = selectors => state =>
-  mapValues(selector => selector(state), selectors);
-
-export { formatTime, composeSelectors };
+export { formatTime };

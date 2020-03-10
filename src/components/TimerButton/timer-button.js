@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Box, Button } from '@material-ui/core';
 import connectProps from './props';
 
-const TimerButton = ({ paused, done, toggleTimer, resetTimer }) => {
+const TimerButton = ({ done, buttonLabel, toggleTimer, resetTimer }) => {
   const handleClick = useCallback(() => {
     done ? resetTimer() : toggleTimer();
   }, [done, toggleTimer, resetTimer]);
@@ -16,7 +16,7 @@ const TimerButton = ({ paused, done, toggleTimer, resetTimer }) => {
           color={'primary'}
           onClick={handleClick}
         >
-          {done ? 'Reset' : paused ? 'Start' : 'Stop'}
+          {buttonLabel}
         </Button>
       </Box>
     </Box>
